@@ -1,0 +1,59 @@
+/* --- Leaderboard Specifics --- */
+#leaderboard-table th {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #a0a0a0;
+  padding-bottom: 0.5rem;
+}
+
+#leaderboard-table td {
+  padding: 0.4rem 0.25rem;
+  vertical-align: middle;
+}
+
+.driver-row {
+  transition: background-color 0.2s ease;
+}
+
+.driver-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.team-color-bar {
+  width: 4px;
+  height: 2rem;
+  border-radius: 2px;
+  margin-right: 0.5rem;
+}
+
+.tire-compound {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #111;
+}
+
+.fastest-lap-glow {
+  color: var(--color-purple-glow);
+  text-shadow: 0 0 8px var(--color-purple-glow);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 5px var(--color-purple-glow);
+  }
+
+  50% {
+    text-shadow: 0 0 15px var(--color-purple-glow);
+  }
+
+  100% {
+    text-shadow: 0 0 5px var(--color-purple-glow);
+  }
+}

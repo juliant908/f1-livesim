@@ -1,0 +1,36 @@
+/* --- Track Map --- */
+#track-map-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 5rem;
+}
+
+#track-map {
+  width: 90%;
+  /* 16:9 Aspect Ratio */
+}
+
+#track-svg {
+  position: relative;
+  top: 25%;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+}
+
+.car-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: top 0.5s linear, left 0.5s linear;
+  z-index: 999;
+}
+
+.car-dot.highlight {
+  transform: translate(-50%, -50%) scale(1.8);
+  box-shadow: 0 0 10px white;
+  z-index: 10;
+}

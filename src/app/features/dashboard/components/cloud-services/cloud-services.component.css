@@ -1,0 +1,41 @@
+/* --- AWS Panel --- */
+.aws-service {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.aws-service.active {
+  transform: scale(1.05);
+}
+
+.aws-service.active .aws-icon {
+  box-shadow: 0 0 15px var(--team-mercedes);
+}
+
+.flow-line {
+  height: 2px;
+  background-color: #444;
+  position: relative;
+  overflow: hidden;
+}
+
+.flow-pulse {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--team-mercedes), transparent);
+  animation: flow 1.5s ease-in-out infinite;
+}
+
+@keyframes flow {
+  from {
+    left: -50%;
+  }
+
+  to {
+    left: 150%;
+  }
+}
