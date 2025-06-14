@@ -14,7 +14,6 @@
 }
 
 .flow-line {
-  height: 2px;
   background-color: #444;
   position: relative;
   overflow: hidden;

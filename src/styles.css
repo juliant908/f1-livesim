@@ -26,7 +26,6 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #0A0A0A;
   color: #E5E5E5;
-  overflow: hidden;
 }
 
 .data-card {
@@ -36,44 +35,4 @@ body {
   border-radius: 0.75rem;
   padding: 1rem;
   overflow: hidden;
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 1024px) {
-  #main-dashboard {
-    grid-template-columns: 280px 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      "leaderboard track"
-      "sidepanel track";
-  }
-
-  #leaderboard-panel {
-    grid-area: leaderboard;
-  }
-
-  #track-map-container {
-    grid-area: track;
-  }
-
-  #side-panels {
-    grid-area: sidepanel;
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    overflow: auto;
-  }
-
-  #main-dashboard {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-  }
-
-  #track-map {
-    width: 100%;
-    padding-top: 56.25%;
-  }
 }
