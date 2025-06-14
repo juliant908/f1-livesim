@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DriverFocusComponent } from './driver-focus.component';
+import { DriverPannelComponent } from './driver-pannel.component';
 
-describe('DriverFocusComponent', () => {
-  let component: DriverFocusComponent;
-  let fixture: ComponentFixture<DriverFocusComponent>;
+describe('DriverPannelComponent', () => {
+  let component: DriverPannelComponent;
+  let fixture: ComponentFixture<DriverPannelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DriverFocusComponent]
+      imports: [DriverPannelComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DriverFocusComponent);
+    fixture = TestBed.createComponent(DriverPannelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

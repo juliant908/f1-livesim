@@ -1,0 +1,19 @@
+<section id="driver-focus-panel" class="data-card" [class.hidden]="!driver()">
+  <div class="flex items-center mb-3">
+    <img src="{{driver()?.photo}}" alt="{{driver()?.name}}" class="w-20 h-20 rounded-full mr-4 border-2" [style.borderColor]="driver()?.color">
+    <div>
+      <h3 class="font-bold text-xl">{{driver()?.name}}</h3>
+      <p class="text-sm" [style.color]="driver()?.color">{{driver()?.team}}</p>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 gap-2 text-sm">
+    <div class="bg-gray-900 p-2 rounded">
+      <p class="text-xs text-gray-400">LAST LAP</p>
+      <p class="font-bold font-mono">{{(driver()?.lastLapTime ?? 0) > 0 ? (driver()?.lastLapTime?.toFixed(3) | lapTime ) : 'N/A'}}</p>
+    </div>
+    <div class="bg-gray-900 p-2 rounded">
+      <p class="text-xs text-gray-400">TIRE AGE</p>
+      <p class="font-bold font-mono">{{driver()?.tireAge}} Laps</p>
+    </div>
+  </div>
+</section>

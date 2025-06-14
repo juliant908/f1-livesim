@@ -18,9 +18,6 @@ export class DashboardComponent {
   private readonly _raceService = inject(RaceService);
   private readonly _tiresService = inject(TiresService);
 
-  private _drivers = signal<DriverState[]>([]);
-  drivers = computed(() => this._drivers());
-
   private _tires = signal<Tires>({});
   tires = computed<Tires>(() => this._tires());
 
@@ -29,15 +26,13 @@ export class DashboardComponent {
   }
 
   setInitialState(){
-    this._raceService.initalizeRaceState();
-    this.setDrivers();
+    this._raceService.initializeRaceState();
     this.setTires();
+    this.setRace();
   }
 
-  setDrivers(){
-    const drivers = this._raceService.raceState();
-    if(!drivers) return;
-    this._drivers.set(drivers);
+  setRace() {
+    this._raceService.getRaceInfo();
   }
 
   setTires() {

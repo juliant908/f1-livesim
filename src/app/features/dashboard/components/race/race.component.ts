@@ -10,5 +10,4 @@ import { DriverState } from '../../models/drivers';
   styleUrl: './race.component.css'
 })
 export class RaceComponent {
-  drivers = input.required<DriverState[]>();
 }

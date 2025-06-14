@@ -7,14 +7,15 @@
         <tr>
           <th class="w-8">POS</th>
           <th colspan="2">DRIVER</th>
-          <th class="text-center">INTERVAL</th>
+          <th class="text-center">{{showInterval ? 'INTERVAL' : 'LEADER'}}</th>
           <th class="text-center">TIRE</th>
         </tr>
       </thead>
       <tbody id="leaderboard-body">
         @for(driver of drivers(); track driver.id; let i = $index){
-          <tr class="driver-row border-b border-gray-800" [attr.data-driver-id]="driver.id">
-            <td class="text-center font-bold text-lg">{{ i + 1 }}</td>
+          <tr class="driver-row border-b border-gray-800" [attr.data-driver-id]="driver.id" (click)="selectDriver(driver)" (mouseenter)="test(driver.code)" (mouseleave)="test()">
+            @let pos = i + 1;
+            <td class="text-center font-bold text-lg">{{ pos }}</td>
             <td>
               <div class="team-color-bar" [style]="'background-color:' + driver.color"></div>
             </td>
@@ -23,9 +24,15 @@
               <div class="text-xs text-gray-400">{{driver.name.split(' ').pop()}}</div>
             </td>
             <td class="text-center text-sm"
-              [class.fastest-lap-glow]="isFastest"
+              [class.fastest-lap-glow]="isFastest() === driver.id"
             >
-              {{i !== 0 ? driver.lastLapTime.toFixed(3) : "Leader"}}
+              @if(showInterval && driver !== drivers()[0]){
+                + {{driver.interval.toFixed(3)}}
+              } @else if(!showInterval && driver !== drivers()[0]){
+                + {{driver.distanceFromLeader.toFixed(3)}}
+              } @else {
+                Leader
+              }
             </td>
             <td class="text-center">
               @let tire = tires()[driver.tire];

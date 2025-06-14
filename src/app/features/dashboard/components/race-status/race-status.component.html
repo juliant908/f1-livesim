@@ -3,7 +3,7 @@
   <div class="grid grid-cols-2 gap-4 text-center">
     <div class="bg-gray-900 p-3 rounded-lg">
       <p class="text-xs text-gray-400">LAP</p>
-      <p id="lap-counter" class="text-2xl font-bold">1 / 53</p>
+      <p id="lap-counter" class="text-2xl font-bold">{{ (currentLap() <= (raceInfo()?.laps ?? 0)) ? currentLap() + '/' + raceInfo()?.laps : 'END' }}</p>
     </div>
     <div class="bg-gray-900 p-3 rounded-lg">
       <p class="text-xs text-gray-400">SAFETY CAR</p>

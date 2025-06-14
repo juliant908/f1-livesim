@@ -6,3 +6,8 @@ export type FastestLap = {
   driverId: number | null;
   time: number;
 }
+
+export type RaceInfo = {
+  name: string;
+  laps: number;
+}

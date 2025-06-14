@@ -13,7 +13,11 @@
           [style.backgroundColor]="driver.color"
           [title]="driver.code"
           #car
-        ></div>
+        >
+          <div class="driver-code bg-zinc-700" [class.hidden]="code !== driver.code">
+            <strong>{{driver.code}}</strong>
+          </div>
+        </div>
       }
     </div>
   </div>

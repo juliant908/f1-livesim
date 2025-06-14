@@ -6,6 +6,7 @@ export type Driver = {
   code: string;
   team: string;
   color: string;
+  photo: string;
 }
 
 export type DriverState = {
@@ -15,6 +16,7 @@ export type DriverState = {
   lapProgress: number;
   lastLapTime: number;
   interval: number;
+  distanceFromLeader: number;
   tire: string;
   tireAge: number;
 } & Driver;
