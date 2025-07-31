@@ -1,13 +1,17 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import type { FastestLap, RaceInfo, RaceState } from '../../models/race';
-import { driversData } from '../../../../../../../simulation/drivers';
 import { racesData } from '../../../../../../../simulation/races';
 import { DriverData, DriverState } from '../../models/drivers';
+import { HttpClient } from '@angular/common/http';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RaceService {
+  // Dependency injection
+  private readonly _http = inject(HttpClient);
+
   // Signals
   private _raceState = signal<RaceState>([]);
   raceState = computed(() => this._raceState());
@@ -22,39 +26,20 @@ export class RaceService {
   private _selectedDriver = signal<DriverState | null>(null);
   selectedDriver = computed(() => this._selectedDriver());
 
-  initializeRaceState() {
-    const newRaceState = this.generateRandomInitialRaceState();
-    this._raceState.set(newRaceState);
+  async initializeRaceState() {
+    const drivers = await firstValueFrom(this.generateRandomInitialRaceState());
+    this._raceState.set(drivers);
   }
 
   resetRaceState() {
     this.initializeRaceState();
   }
 
-  private generateRandomInitialRaceState(
-    drivers: DriverData[] = driversData as unknown as DriverData[]): DriverState[] {
-    return drivers
-      .map((driver) => ({
-        ...driver,
-        basePace: this.generateBasePace(),
-        paceVariance: this.generatePaceVariance(),
-        interval: 0,
-        distanceFromLeader: 0,
-        lapProgress: 0,
-        lastLapTime: 0,
-        tire: 'M',
-        tireAge: 0,
-        totalDistance: 0,
-      }))
-      .sort(() => Math.random() - 0.5); // Sort to have different grid starts.
-  }
-
-  private generateBasePace(): number {
-    return 85 + Math.random() * 5;
-  }
-
-  private generatePaceVariance(): number {
-    return 0.5 + Math.random();
+  private generateRandomInitialRaceState(): Observable<DriverState[]>{
+    return this._http.post<DriverState[]>(
+      'http://localhost:3000/race/start',
+      null
+    ); // Sort to have different grid starts.
   }
 
   getRaceInfo() {

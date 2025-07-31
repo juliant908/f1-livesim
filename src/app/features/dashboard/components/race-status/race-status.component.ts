@@ -14,7 +14,7 @@ export class RaceStatusComponent {
 
   raceInfo = computed(() => this._raceService.raceInfo());
   currentLap = computed(() => {
-    const leaderDistance = this._raceService.raceState()[0].totalDistance
+    const leaderDistance = this._raceService.raceState()[0]?.totalDistance
     return Math.floor((leaderDistance / 1963) % 1963 + 1)
   })
 }
